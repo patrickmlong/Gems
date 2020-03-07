@@ -2,9 +2,12 @@ using DataFrames
 using CSV
 using DataFramesMeta
 
+module Utils 
+export gems
+
+
 function set_map_type(df,
         flag_type:: String)
-    
         return df[df[Symbol(flag_type)] .!= "0", :]
 end
     
@@ -25,13 +28,11 @@ function gems(icd_code:: String;
         df = set_map_type(df,flag_type)
     end
 
-
     if show_flags
 
         my_query = @linq df |>
             where(:source .== icd_code) |>
             select(names(df))
-
     else
 
         my_query = @linq df |>
@@ -40,6 +41,7 @@ function gems(icd_code:: String;
                     :target,
                     :descriptions)
     end
-
     return my_query
+end
+
 end
