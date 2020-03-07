@@ -56,7 +56,7 @@ function join_icd_descriptions(df_gems, df_desc)
     return df
 end
 
-cd("../../../data/")
+cd("../data/")
 
 gems9, gems10, desc9, desc10 = load_tables();
 

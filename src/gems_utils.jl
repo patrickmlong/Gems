@@ -4,11 +4,10 @@ using DataFramesMeta
 
 function set_map_type(df,
         flag_type:: String)
-
-        return df[df[flag_type] .!= "0"]
+    
+        return df[df[Symbol(flag_type)] .!= "0", :]
 end
-
-
+    
 function gems(icd_code:: String;
         map_to:: String = "icd10",
         flag_type:: String = "",
