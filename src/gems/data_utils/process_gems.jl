@@ -70,5 +70,5 @@ gems9_10 = join_icd_descriptions(gems9,desc10);
 gems10_9 = join_icd_descriptions(gems10,desc9);
 
 
-CSV.write("gems9_10.csv", gems9_10)
-CSV.write("gems10_9.csv", gems10_9)
+CSV.write("processed/gems9_10.csv", gems9_10)
+CSV.write("processed/gems10_9.csv", gems10_9)
