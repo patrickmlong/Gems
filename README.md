@@ -42,7 +42,7 @@ source  target                                descriptions
 
 gems(""R6521"", map_to = "icd9", show_flags = true)
 source   icd9    descriptions  approximate  no map  combination    scenario  choice list  
-R6521  99592  Septic shock            1       0            1           1            2  
+R6521  99592   Septic shock            1       0            1           1            2  
 R6521  78552   Severe sepsis           1       0            1           1            1 
 ```
 
