@@ -1,5 +1,5 @@
 module Gems
 
-include("utils.jl")
+greet() = print("Hello World!")
 
-end
+end # module
