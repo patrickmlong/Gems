@@ -11,7 +11,8 @@ function set_map_type(df,
         flag_type:: String)
         return df[df[Symbol(flag_type)] .!= "0", :]
 end
-    
+
+
 function gems(icd_code:: String;
         map_to:: String = "icd10",
         flag_type:: String = "",
@@ -23,7 +24,6 @@ function gems(icd_code:: String;
         df = CSV.read("gems10_9.csv")
     end
 
-
     if length(flag_type) > 0
 
         df = set_map_type(df,flag_type)
@@ -31,18 +31,27 @@ function gems(icd_code:: String;
 
     if show_flags
 
-        my_query = @linq df |>
-            where(:source .== icd_code) |>
-            select(names(df))
+        my_query = df[df[:source] .== icd_code, names(df)]
+
+#         my_query = @linq df |>
+#             where(:source .== icd_code) |>
+#             select(names(df))
+
     else
 
-        my_query = @linq df |>
-                where(:source .== icd_code) |>
-                select(:source,
-                    :target,
-                    :descriptions)
+        my_query = df[df[:source] .== icd_code,
+            [:source,:target,:descriptions ]]
+
+#         my_query = @linq df |>
+#                 where(:source .== icd_code) |>
+#                 select(:source,
+#                     :target,
+#                     :descriptions)
     end
+
     return my_query
+
 end
+
 
 end
