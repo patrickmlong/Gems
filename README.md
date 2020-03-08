@@ -32,7 +32,7 @@ General Equivalency Maps (GEMs) support the interoperability between ICD-9 and I
 ```julia
 import Gems: gems
 
-gems("59972", map_to = "icd10", flag_type = "approximate)
+gems("59972", map_to = "icd10", flag_type = "approximate")
 
 │ Row │ source │ target │ descriptions                           │
 │     │ String │ String │ String                                 │
