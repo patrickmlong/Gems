@@ -30,20 +30,27 @@ General Equivalency Maps (GEMs) support the interoperability between ICD-9 and I
 
 <i>Forward mapping</i>
 ```julia
+import Gems: gems
+
 gems("59972", map_to = "icd10", flag_type = "approximate)
 
-source  target                                descriptions
-59972   R311     Benign essential microscopic hematuria
-59972  R3121         Asymptomatic microscopic hematuria
-59972  R3129                Other microscopic hematuria
+│ Row │ source │ target │ descriptions                           │
+│     │ String │ String │ String                                 │
+├─────┼────────┼────────┼────────────────────────────────────────┤
+│ 1   │ 59972  │ R311   │ Benign essential microscopic hematuria │
+│ 2   │ 59972  │ R3121  │ Asymptomatic microscopic hematuria     │
+│ 3   │ 59972  │ R3129  │ Other microscopic hematuria            │
 ```
 <i>Backward mapping</i>
 ```julia
+import Gems: gems
 
-gems(""R6521"", map_to = "icd9", show_flags = true)
-source   icd9    descriptions  approximate  no map  combination    scenario  choice list  
-R6521  99592   Septic shock            1       0            1           1            2  
-R6521  78552   Severe sepsis           1       0            1           1            1 
+gems("R6521", map_to = "icd9", show_flags = true)
+│ Row │ source │ target │ approximate │ no map │ combination │ scenario │ choice list │ descriptions  │
+│     │ String │ String │ Int64       │ Int64  │ Int64       │ Int64    │ Int64       │ String        │
+├─────┼────────┼────────┼─────────────┼────────┼─────────────┼──────────┼─────────────┼───────────────┤
+│ 1   │ R6521  │ 78552  │ 1           │ 0      │ 1           │ 1        │ 1           │ Septic shock  │
+│ 2   │ R6521  │ 99592  │ 1           │ 0      │ 1           │ 1        │ 2           │ Severe sepsis │
 ```
 
 ## Notice of Non-Affiliation and Disclaimer 
