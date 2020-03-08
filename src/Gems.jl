@@ -1,8 +1,8 @@
-#using DataFrames
-#using CSV
-#using DataFramesMeta
-
 module Gems
+using DataFrames
+using CSV
+using DataFramesMeta
+
 
 export gems
 
