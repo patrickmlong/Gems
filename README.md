@@ -45,6 +45,7 @@ gems("59972", map_to = "icd10", flag_type = "approximate")
 import Gems: gems
 
 gems("R6521", map_to = "icd9", show_flags = true)
+
 │ Row │ source │ target │ approximate │ no map │ combination │ scenario │ choice list │ descriptions  │
 │     │ String │ String │ Int64       │ Int64  │ Int64       │ Int64    │ Int64       │ String        │
 ├─────┼────────┼────────┼─────────────┼────────┼─────────────┼──────────┼─────────────┼───────────────┤
