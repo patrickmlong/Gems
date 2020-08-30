@@ -16,7 +16,7 @@ Map between ICD-9-CM and ICD-10-CM
  - Forward mapping: ICD-9 to ICD-10 codes
  - Backward mapping: ICD-10 to ICD-9 codes
 
-Filter by map type
+Map types
  - Approximate:
      - Imperfect correspondence: approximate = 1
      - Perfect correspondence: approximate = 0
