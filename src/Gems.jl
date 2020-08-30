@@ -25,6 +25,7 @@ function gems(icd_code:: String;
         df = CSV.File("gems9_10.csv") |> DataFrame
     elseif map_to == "icd9"
         df = CSV.File("gems10_9.csv") |> DataFrame
+    end
 
     if length(flag_type) > 0
 
