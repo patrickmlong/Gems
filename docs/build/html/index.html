@@ -1,0 +1,193 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="Julia">
+  <head>
+    <meta charset="utf-8" />
+    <title>Gems documentation &#8212; gems 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="#">gems 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Gems documentation</a><ul>
+<li><a class="reference internal" href="#about-gems">About GEMs</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gems-documentation">
+<h1>Gems documentation<a class="headerlink" href="#gems-documentation" title="Permalink to this headline">¶</a></h1>
+<p>A small julia utility for basic ICD-9-CM and ICD-10-CM GEMs cross-walking.</p>
+<div class="section" id="about-gems">
+<h2>About GEMs<a class="headerlink" href="#about-gems" title="Permalink to this headline">¶</a></h2>
+<p>General Equivalency Maps (GEMs) support the interoperability between ICD-9 and ICD-10 codebases and are maintained by the Centers for Medicare and Medicaid Services (CMS). Multiple mapping types may occur including one-to-one and one-to-many. GEMs provide various flags to further characterize these mapping relationships.</p>
+<dl class="simple">
+<dt>Map between ICD-9-CM and ICD-10-CM</dt><dd><ul class="simple">
+<li><p>Forward mapping: ICD-9 to ICD-10 codes</p></li>
+<li><p>Backward mapping: ICD-10 to ICD-9 codes</p></li>
+</ul>
+</dd>
+<dt>Filter by map type</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>Approximate:</dt><dd><ul>
+<li><p>Imperfect correspondence: approximate = 1</p></li>
+<li><p>Perfect correspondence: approximate = 0</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>No Map:</dt><dd><ul>
+<li><p>No acceptable GEMs mapping exists: no map = 1</p></li>
+<li><p>One or greater mappings exist: no map = 0</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Combination:</dt><dd><ul>
+<li><p>Mapping is one-to-many: combination = 1</p></li>
+<li><p>One-to-one: combination = 0</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Scenario:</dt><dd><ul>
+<li><p>Multiple target codes are required to complete mapping: scenario = 1</p></li>
+<li><p>Multiple target codes are not required: scenario = 0</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Choice list: Used with the combination flag to direct alternatives when mappings are one-to-many</dt><dd><ul>
+<li><p>A single combination mapping exists: choice list = 1</p></li>
+<li><p>More than one combination mapping exists: choice list = 2</p></li>
+<li><p>No combination mapping exists: choice list = 0</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Forward mapping:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import Gems: gems
+
+gems(&quot;59972&quot;, map_to = &quot;icd10&quot;, flag_type = &quot;approximate&quot;)
+
+│ Row │ source │ target │ descriptions                           │
+│     │ String │ String │ String                                 │
+├─────┼────────┼────────┼────────────────────────────────────────┤
+│ 1   │ 59972  │ R311   │ Benign essential microscopic hematuria │
+│ 2   │ 59972  │ R3121  │ Asymptomatic microscopic hematuria     │
+│ 3   │ 59972  │ R3129  │ Other microscopic hematuria            │
+</pre></div>
+</div>
+<p>Backward mapping:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import Gems: gems
+
+gems(&quot;R6521&quot;, map_to = &quot;icd9&quot;, show_flags = true)
+
+│ Row │ source │ target │ approximate │ no map │ combination │ scenario │ choice list │ descriptions  │
+│     │ String │ String │ Int64       │ Int64  │ Int64       │ Int64    │ Int64       │ String        │
+├─────┼────────┼────────┼─────────────┼────────┼─────────────┼──────────┼─────────────┼───────────────┤
+│ 1   │ R6521  │ 78552  │ 1           │ 0      │ 1           │ 1        │ 1           │ Septic shock  │
+│ 2   │ R6521  │ 99592  │ 1           │ 0      │ 1           │ 1        │ 2           │ Severe sepsis │
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The author of this library is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Centers for Medicare and Medicaid Services (CMS), or any of its subsidiaries or its affiliates.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="#">gems 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Patrick Long.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
+    </div>
+  </body>
+</html>
