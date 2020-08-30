@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Gems documentation
+Gems.jl documentation
 ================================
 
 A small julia utility for basic ICD-9-CM and ICD-10-CM GEMs cross-walking.
