@@ -1,3 +1,6 @@
+__precompile__()
+
+
 module Gems
 #using DataFrames
 #using CSV
