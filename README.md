@@ -20,7 +20,7 @@ General Equivalency Maps (GEMs) support the interoperability between ICD-9 and I
 
 <b>Backward mapping</b><br> Mapping from ICD-10 to ICD-9 codes.<br>
 
-<b>Map types</b><br>
+<b>Relationships</b><br>
 * <i>__Approximate__</i>: Mappings with imperfect correspondence (approximate = 1) or a perfect correspondence (approximate = 0).<br>
 * <i>__No__ __Map__</i>: No acceptable GEMs mapping exisits (no map = 1) or one or greater mappings exist (no map = 0).<br>
 * <i>__Combination__</i>: Mapping is one-to-many (combination = 1) or one-to-one (combination = 0). <br>
