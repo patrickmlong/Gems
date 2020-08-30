@@ -38,7 +38,7 @@ pkg"add https://github.com/pkmklong/Gems.jl"
 ```
 <i>Forward mapping</i>
 ```julia
-import Gems: gems
+using Gems
 
 gems("59972", map_to = "icd10", flag_type = "approximate")
 
