@@ -22,9 +22,9 @@ function gems(icd_code:: String;
         show_flags:: Bool = false)
 
     if map_to == "icd10"
-        df = CSV.read("../data/processed/gems9_10.csv")
+        df = CSV.read("/gems_files/gems9_10.csv")
     elseif map_to == "icd9"
-        df = CSV.read("../data/processed/gems10_9.csv")
+        df = CSV.read("/gems_files/gems10_9.csv")
     end
 
     if length(flag_type) > 0
