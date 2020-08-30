@@ -22,9 +22,11 @@ function gems(icd_code:: String;
         show_flags:: Bool = false)
 
     if map_to == "icd10"
-        df = CSV.File("gems9_10.csv") |> DataFrame
+        file_path = join([@__DIR__, "gems9_10.csv"], "/")
+        df = CSV.File(file_path) |> DataFrame
     elseif map_to == "icd9"
-        df = CSV.File("gems10_9.csv") |> DataFrame
+        file_path = join([@__DIR__, "gems10_9.csv"], "/")
+        df = CSV.File(file_path) |> DataFrame
     end
 
     if length(flag_type) > 0
