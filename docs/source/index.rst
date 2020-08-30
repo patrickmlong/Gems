@@ -37,6 +37,12 @@ Filter by map type
 Examples
 ^^^^^^^^
 
+Installation::
+
+    using Pkg
+
+    pkg"add https://github.com/pkmklong/Gems.jl"
+
 
 Forward mapping::
 
