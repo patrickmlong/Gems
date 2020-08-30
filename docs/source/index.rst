@@ -46,7 +46,7 @@ Installation::
 
 Forward mapping::
 
-    import Gems: gems
+    using Gems
 
     gems("59972", map_to = "icd10", flag_type = "approximate")
 
