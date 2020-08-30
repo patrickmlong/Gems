@@ -51,7 +51,7 @@ gems("59972", map_to = "icd10", flag_type = "approximate")
 ```
 <i>Backward mapping</i>
 ```julia
-import Gems: gems
+using Gems
 
 gems("R6521", map_to = "icd9", show_flags = true)
 
