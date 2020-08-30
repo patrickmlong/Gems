@@ -73,7 +73,8 @@ Backward mapping::
    :maxdepth: 3
    :caption: Contents:
 
-    license
+   license
+
 
 Indices and tables
 ==================
