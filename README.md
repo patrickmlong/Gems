@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://gemsjl.readthedocs.io/en/latest/) Check out the [Gems.jl documentation on ReadTheDocs](https://gemsjl.readthedocs.io/en/latest/).
+
 # Gems
 Julia package for ICD GEMs mapping
 
