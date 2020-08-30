@@ -29,7 +29,7 @@ Relationships
  - Scenario:
      - Multiple target codes are required to complete mapping: scenario = 1
      - Multiple target codes are not required: scenario = 0
- - Choice list: Used with the combination flag to direct alternatives when mappings are one-to-many
+ - Choice list: Used with the combination flag to direct one-to-many mappings
      - A single combination mapping exists: choice list = 1
      - More than one combination mapping exists: choice list = 2
      - No combination mapping exists: choice list = 0
