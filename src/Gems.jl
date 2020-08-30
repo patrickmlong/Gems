@@ -22,16 +22,9 @@ function gems(icd_code:: String;
         show_flags:: Bool = false)
 
     if map_to == "icd10"
-<<<<<<< HEAD
         df = CSV.File("gems9_10.csv") |> DataFrame
     elseif map_to == "icd9"
         df = CSV.File("gems10_9.csv") |> DataFrame
-=======
-        df = CSV.read("gems_files/gems9_10.csv")
-    elseif map_to == "icd9"
-        df = CSV.read("gems_files/gems10_9.csv")
->>>>>>> cff2f616ff352b65989064b394e8a25987d50181
-    end
 
     if length(flag_type) > 0
 
