@@ -60,7 +60,7 @@ Forward mapping::
 
 Backward mapping::
 
-    import Gems: gems
+    using Gems
 
     gems("R6521", map_to = "icd9", show_flags = true)
 
