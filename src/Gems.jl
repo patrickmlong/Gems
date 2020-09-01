@@ -5,8 +5,8 @@ module Gems
 using DataFrames
 using CSV
 
-
-export gems
+gemsjl = Gems
+export gemsjl
 
 
 """
