@@ -45,6 +45,7 @@ function include_flags(show_flags:: Bool)
         df = df[df[:source] .== icd_code,
             [:source,:target,:descriptions ]]             
     end
+end
 
     
 function forward_mapping(
