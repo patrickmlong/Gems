@@ -17,29 +17,35 @@ end
 
 
 function map_direction(df,
-                mapping:: String)
-        if mapping == "icd10"
+                map_to:: String)
+        if map_to == "icd10"
                 df = rename(df, Dict(:source => :icd9, :target => :icd10))
-        elseif mapping == "icd9"
+        elseif map_to == "icd9"
                 df = rename(df, Dict(:source => :icd10, :target => :icd9))
         end
         return df
 end
-                
-                
-function gems(icd_code:: String;
-        map_to:: String = "icd10",
-        flag_type:: String = "",
-        show_flags:: Bool = false)
+ 
 
-    if map_to == "icd10"
+function load_lookups(map_to:: String)
+     if map_to == "icd10"
         file_path = join([@__DIR__, "gems9_10.csv"], "/")
         df = CSV.File(file_path) |> DataFrame
     elseif map_to == "icd9"
         file_path = join([@__DIR__, "gems10_9.csv"], "/")
         df = CSV.File(file_path) |> DataFrame
-    end
-     
+        end
+        return df
+end
+
+                
+function gems(icd_code:: String;
+        map_to:: String = "icd10",
+        flag_type:: String = "",
+        show_flags:: Bool = false)
+        
+    df = load_lookups(map_to)
+      
     if length(flag_type) > 0
         df = set_map_type(df,flag_type)
     end
@@ -47,18 +53,10 @@ function gems(icd_code:: String;
     if show_flags
         df = df[df[:source] .== icd_code, names(df)]
         df = map_direction(df, map_to)
-#         my_query = @linq df |>
-#             where(:source .== icd_code) |>
-#             select(names(df))
     else
         df = df[df[:source] .== icd_code,
             [:source,:target,:descriptions ]] 
-        df = map_direction(df, map_to)
-#         my_query = @linq df |>
-#                 where(:source .== icd_code) |>
-#                 select(:source,
-#                     :target,
-#                     :descriptions)                
+        df = map_direction(df, map_to)              
     end
     return df
 end
