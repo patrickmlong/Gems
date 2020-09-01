@@ -48,9 +48,9 @@ function include_flags(show_flags:: Bool)
 end
 
     
-function forward_mapping(
-        flag_type:: String = "",
-        show_flags:: Bool = false)       
+function forward_mapping(icd_code:: String; 
+                flag_type:: String = "",
+                show_flags:: Bool = false)
         df = load_gems9_10()
         df = filter_flags(flag_type)
         df = include_flags(show_flags)        
@@ -58,9 +58,9 @@ function forward_mapping(
 end
 
     
-function backward_mapping(
-        flag_type:: String = "",
-        show_flags:: Bool = false)    
+function backward_mapping(icd_code:: String;
+                flag_type:: String = "",
+                show_flags:: Bool = false)    
         df = load_gems10_9()
         df = filter_flags(flag_type)
         df = include_flags(show_flags)        
