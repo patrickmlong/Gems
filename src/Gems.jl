@@ -53,8 +53,8 @@ function forward_mapping(icd_code:: String;
                 flag_type:: String = "",
                 show_flags:: Bool = false)
         df = load_gems9_10()
-        df = filter_flags(flag_type)
-        df = include_flags(show_flags)        
+        df = filter_flags(df, flag_type)
+        df = include_flags(df, show_flags)       
     return df
 end
 
@@ -63,8 +63,8 @@ function backward_mapping(icd_code:: String;
                 flag_type:: String = "",
                 show_flags:: Bool = false)    
         df = load_gems10_9()
-        df = filter_flags(flag_type)
-        df = include_flags(show_flags)        
+        df = filter_flags(df, flag_type)
+        df = include_flags(df, show_flags)    
     return df
 end
 
