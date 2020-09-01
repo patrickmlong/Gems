@@ -30,7 +30,7 @@ end
 
 Limit GEM mapping table to a specific mapping relationship.
 """
-function filter_flags(df,
+function filter_flags(df::DataFrames.DataFrame,
         flag_type:: String)
     if length(flag_type) > 0
         return df[df[Symbol(flag_type)] .== 1, :]
@@ -38,7 +38,8 @@ function filter_flags(df,
 end
 
     
-function include_flags(icd_code:: String;
+function include_flags(df::DataFrames.DataFrame,
+                icd_code:: String;
                 show_flags:: Bool) 
         if show_flags
             df = df[df[:source] .== icd_code, names(df)]
