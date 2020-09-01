@@ -38,7 +38,8 @@ function filter_flags(df,
 end
 
     
-function include_flags(show_flags:: Bool) 
+function include_flags(icd_code:: String;
+                show_flags:: Bool) 
         if show_flags
             df = df[df[:source] .== icd_code, names(df)]
         else
