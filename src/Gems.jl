@@ -56,7 +56,7 @@ function forward_mapping(icd_code:: String;
                 show_flags:: Bool = false)
         df = load_gems9_10()
         df = filter_flags(df, flag_type)
-        df = include_flags(df, icd_code, show_flags, map_from = "icd9")       
+        df = include_flags(df, icd_code, show_flags, "icd9")       
     return df
 end
 
@@ -66,7 +66,7 @@ function backward_mapping(icd_code:: String;
                 show_flags:: Bool = false)    
         df = load_gems10_9()
         df = filter_flags(df, flag_type)
-        df = include_flags(df, icd_code, show_flags, map_from = "icd10")    
+        df = include_flags(df, icd_code, show_flags, "icd10")    
     return df
 end
 
