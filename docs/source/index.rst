@@ -50,7 +50,7 @@ Forward mapping::
 
     gems("59972", map_to = "icd10", flag_type = "approximate")
 
-    │ Row │ source │ target │ descriptions                           │
+    │ Row │ icd9   │ icd10  │ descriptions                           │
     │     │ String │ String │ String                                 │
     ├─────┼────────┼────────┼────────────────────────────────────────┤
     │ 1   │ 59972  │ R311   │ Benign essential microscopic hematuria │
@@ -64,7 +64,7 @@ Backward mapping::
 
     gems("R6521", map_to = "icd9", show_flags = true)
 
-    │ Row │ source │ target │ approximate │ no map │ combination │ scenario │ choice list │ descriptions  │
+    │ Row │ icd10  │ icd9   │ approximate │ no map │ combination │ scenario │ choice list │ descriptions  │
     │     │ String │ String │ Int64       │ Int64  │ Int64       │ Int64    │ Int64       │ String        │
     ├─────┼────────┼────────┼─────────────┼────────┼─────────────┼──────────┼─────────────┼───────────────┤
     │ 1   │ R6521  │ 78552  │ 1           │ 0      │ 1           │ 1        │ 1           │ Septic shock  │
