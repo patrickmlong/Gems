@@ -16,6 +16,15 @@ function set_map_type(df,
 end
 
 
+function map_direction(df,
+                mapping:: String)
+        if mapping == "icd10"
+                rename!(df, Dict(:source => :icd9, :target => :icd10))
+        elseif mapping == "icd9"
+                rename!(df, Dict(:source => :icd10, :target => :icd9))       
+end
+                
+                
 function gems(icd_code:: String;
         map_to:: String = "icd10",
         flag_type:: String = "",
@@ -28,35 +37,27 @@ function gems(icd_code:: String;
         file_path = join([@__DIR__, "gems10_9.csv"], "/")
         df = CSV.File(file_path) |> DataFrame
     end
-
+     
     if length(flag_type) > 0
-
         df = set_map_type(df,flag_type)
     end
-
+        
     if show_flags
-
-        my_query = df[df[:source] .== icd_code, names(df)]
-
+        df = df[df[:source] .== icd_code, names(df)]
+        df = map_direction(df, map_to)
 #         my_query = @linq df |>
 #             where(:source .== icd_code) |>
 #             select(names(df))
-
     else
-
-        my_query = df[df[:source] .== icd_code,
-            [:source,:target,:descriptions ]]
-
+        df = df[df[:source] .== icd_code,
+            [:source,:target,:descriptions ]] 
+        df = map_direction(df, map_to)
 #         my_query = @linq df |>
 #                 where(:source .== icd_code) |>
 #                 select(:source,
 #                     :target,
-#                     :descriptions)
+#                     :descriptions)                
     end
-
-    return my_query
-
+    return df
 end
-
-
 end
