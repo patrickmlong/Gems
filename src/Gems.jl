@@ -4,18 +4,27 @@ __precompile__()
 module Gems
 using DataFrames
 using CSV
-#using DataFramesMeta
 
 
 export gems
 
 
+"""
+    set_map(df, flag_type)
+
+Limit GEM mapping table to a specific mapping relationship.
+"""
 function set_map_type(df,
         flag_type:: String)
         return df[df[Symbol(flag_type)] .!= "0", :]
 end
 
 
+"""
+    map_direction(df, map_to)
+
+Rename GEM mapping table columns with either a backward or forward mappings schema
+"""
 function map_direction(df,
                 map_to:: String)
         if map_to == "icd10"
