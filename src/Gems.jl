@@ -16,7 +16,7 @@ Limit GEM mapping table to a specific mapping relationship.
 """
 function set_map_type(df,
         flag_type:: String)
-        return df[df[Symbol(flag_type)] .!= "0", :]
+        return df[df[Symbol(flag_type)] .== 1, :]
 end
 
 
