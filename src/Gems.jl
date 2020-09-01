@@ -19,9 +19,10 @@ end
 function map_direction(df,
                 mapping:: String)
         if mapping == "icd10"
-                rename!(df, Dict(:source => :icd9, :target => :icd10))
+                df = rename(df, Dict(:source => :icd9, :target => :icd10))
         elseif mapping == "icd9"
-                rename!(df, Dict(:source => :icd10, :target => :icd9))
+                df = rename(df, Dict(:source => :icd10, :target => :icd9))
+        end
         return df
 end
                 
