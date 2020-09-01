@@ -23,7 +23,7 @@ end
 """
     map_direction(df, map_to)
 
-Rename GEM mapping table columns with either a backward or forward mappings schema
+Rename GEM mapping table columns with either a backward or forward mappings schema.
 """
 function map_direction(df,
                 map_to:: String)
