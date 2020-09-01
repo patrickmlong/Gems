@@ -40,12 +40,13 @@ end
     
 function include_flags(df::DataFrames.DataFrame,
                 icd_code:: String,
-                show_flags:: Bool;) 
+                show_flags:: Bool,
+                map_from:: String;) 
         if show_flags
-            df = df[df[:icd_code] .== icd_code, names(df)]
+            df = df[df[:map_from] .== icd_code, names(df)]
         else
-        df = df[df[:icd_code] .== icd_code,
-            [:source,:target,:descriptions ]]             
+        df = df[df[:map_from] .== icd_code,
+            [:map_from,:target,:descriptions ]]             
     end
 end
 
@@ -55,7 +56,7 @@ function forward_mapping(icd_code:: String;
                 show_flags:: Bool = false)
         df = load_gems9_10()
         df = filter_flags(df, flag_type)
-        df = include_flags(df, icd_code, show_flags)       
+        df = include_flags(df, icd_code, show_flags, map_from = "icd9")       
     return df
 end
 
@@ -65,7 +66,7 @@ function backward_mapping(icd_code:: String;
                 show_flags:: Bool = false)    
         df = load_gems10_9()
         df = filter_flags(df, flag_type)
-        df = include_flags(df, icd_code, show_flags)    
+        df = include_flags(df, icd_code, show_flags, map_from = "icd10")    
     return df
 end
 
