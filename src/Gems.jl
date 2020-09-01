@@ -31,7 +31,7 @@ end
 Limit GEM mapping table to a specific mapping relationship.
 """
 function filter_flags(df::DataFrames.DataFrame,
-        flag_type:: String)
+        flag_type:: String;)
     if length(flag_type) > 0
         return df[df[Symbol(flag_type)] .== 1, :]
     end
@@ -39,8 +39,8 @@ end
 
     
 function include_flags(df::DataFrames.DataFrame,
-                icd_code:: String;
-                show_flags:: Bool) 
+                icd_code:: String,
+                show_flags:: Bool;) 
         if show_flags
             df = df[df[:source] .== icd_code, names(df)]
         else
@@ -55,7 +55,7 @@ function forward_mapping(icd_code:: String;
                 show_flags:: Bool = false)
         df = load_gems9_10()
         df = filter_flags(df, flag_type)
-        df = include_flags(df, show_flags)       
+        df = include_flags(df, icd_code, show_flags)       
     return df
 end
 
@@ -65,7 +65,7 @@ function backward_mapping(icd_code:: String;
                 show_flags:: Bool = false)    
         df = load_gems10_9()
         df = filter_flags(df, flag_type)
-        df = include_flags(df, show_flags)    
+        df = include_flags(df, icd_code, show_flags)    
     return df
 end
 
