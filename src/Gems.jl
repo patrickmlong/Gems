@@ -42,9 +42,9 @@ function include_flags(df::DataFrames.DataFrame,
                 icd_code:: String,
                 show_flags:: Bool;) 
         if show_flags
-            df = df[df[:source] .== icd_code, names(df)]
+            df = df[df[:icd_code] .== icd_code, names(df)]
         else
-        df = df[df[:source] .== icd_code,
+        df = df[df[:icd_code] .== icd_code,
             [:source,:target,:descriptions ]]             
     end
 end
