@@ -38,35 +38,27 @@ function filter_flags(df::DataFrames.DataFrame,
 end
 
     
-function include_flags(df::DataFrames.DataFrame,
-                icd_code:: String,
-                show_flags:: Bool,
-                map_from:: String;) 
-        if show_flags
-            df = df[df[Symbol(map_from)] .== icd_code, names(df)]
-        else
-        df = df[df[Symbol(map_from)] .== icd_code,
-            [:map_from,:target,:descriptions ]]             
-    end
-end
-
-    
 function forward_mapping(icd_code:: String; 
                 flag_type:: String = "",
-                show_flags:: Bool = false)
+                hide_flags:: Bool = true)
         df = load_gems9_10()
+        df = df[df[:icd9] .== icd_code,:]
         df = filter_flags(df, flag_type)
-        df = include_flags(df, icd_code, show_flags, "icd9")       
+        if hide_flags
+                df = df[:,[:icd9,:icd10,:descriptions ]]
+        end
     return df
 end
 
     
 function backward_mapping(icd_code:: String;
                 flag_type:: String = "",
-                show_flags:: Bool = false)    
+                hide_flags:: Bool = true)    
         df = load_gems10_9()
-        df = filter_flags(df, flag_type)
-        df = include_flags(df, icd_code, show_flags, "icd10")    
+        df = df[df[:icd10] .== icd_code,:]
+        if hide_flags
+                df = df[:,[:icd10,:icd9,:descriptions ]]
+        end
     return df
 end
 
