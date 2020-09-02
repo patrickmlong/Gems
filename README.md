@@ -40,7 +40,7 @@ pkg"add https://github.com/pkmklong/Gems.jl"
 ```julia
 using Gems
 
-gems("59972", map_to = "icd10", flag_type = "approximate")
+Gems.forward_mapping("59972", flag_type = "approximate")
 
 │ Row │ icd9   │ icd10  │ descriptions                           │
 │     │ String │ String │ String                                 │
@@ -53,13 +53,30 @@ gems("59972", map_to = "icd10", flag_type = "approximate")
 ```julia
 using Gems
 
-gems("R6521", map_to = "icd9", show_flags = true)
+Gems.backward_mapping("R6521", hide_flags = false)
 
 │ Row │ icd10  │ icd9   │ approximate │ no map │ combination │ scenario │ choice list │ descriptions  │
 │     │ String │ String │ Int64       │ Int64  │ Int64       │ Int64    │ Int64       │ String        │
 ├─────┼────────┼────────┼─────────────┼────────┼─────────────┼──────────┼─────────────┼───────────────┤
 │ 1   │ R6521  │ 78552  │ 1           │ 0      │ 1           │ 1        │ 1           │ Septic shock  │
 │ 2   │ R6521  │ 99592  │ 1           │ 0      │ 1           │ 1        │ 2           │ Severe sepsis │
+```
+
+<i>Full Gems table retreival</i>
+```julia
+using Gems
+
+first(Gems.load_gems9_10(), 5)
+
+5×8 DataFrame. Omitted printing of 1 columns
+│ Row │ icd9   │ icd10  │ approximate │ no map │ combination │ scenario │ choice list │
+│     │ String │ String │ Int64       │ Int64  │ Int64       │ Int64    │ Int64       │
+├─────┼────────┼────────┼─────────────┼────────┼─────────────┼──────────┼─────────────┤
+│ 1   │ 0010   │ A000   │ 0           │ 0      │ 0           │ 0        │ 0           │
+│ 2   │ 0011   │ A001   │ 0           │ 0      │ 0           │ 0        │ 0           │
+│ 3   │ 0019   │ A009   │ 0           │ 0      │ 0           │ 0        │ 0           │
+│ 4   │ 0020   │ A0100  │ 1           │ 0      │ 0           │ 0        │ 0           │
+│ 5   │ 0021   │ A011   │ 0           │ 0      │ 0           │ 0        │ 0           │
 ```
 
 ## Notice of Non-Affiliation and Disclaimer 
