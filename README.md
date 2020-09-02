@@ -62,7 +62,7 @@ Gems.backward_mapping("R6521", hide_flags = false)
 │ 2   │ R6521  │ 99592  │ 1           │ 0      │ 1           │ 1        │ 2           │ Severe sepsis │
 ```
 
-<i>Full Gems table retreival</i>
+<i>Retrieve GEMs tables</i>
 ```julia
 using Gems
 
