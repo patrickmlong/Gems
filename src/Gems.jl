@@ -43,9 +43,9 @@ function include_flags(df::DataFrames.DataFrame,
                 show_flags:: Bool,
                 map_from:: String;) 
         if show_flags
-            df = df[df[Symbol(icd_code)] .== icd_code, names(df)]
+            df = df[df[Symbol(map_from)] .== icd_code, names(df)]
         else
-        df = df[df[Symbol(icd_code)] .== icd_code,
+        df = df[df[Symbol(map_from)] .== icd_code,
             [:map_from,:target,:descriptions ]]             
     end
 end
