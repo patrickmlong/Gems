@@ -10,8 +10,7 @@ function load_tables()
     df_icd9_desc = CSV.readtable("CMS32_DESC_LONG_DX.txt", separator = '\t', header = false)
     df_icd10_desc = CSV.readtable("icd10cm_codes_2018.txt", separator = '\t', header = false)
     
-    return df_icd9, df_icd10, df_icd9_desc, df_icd10_desc
-    
+    return df_icd9, df_icd10, df_icd9_desc, df_icd10_desc    
 end
 
 
