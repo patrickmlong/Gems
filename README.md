@@ -83,4 +83,5 @@ first(Gems.load_gems9_10(), 5)
 The author of this library is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Centers for Medicare and Medicaid Services (CMS), or any of its subsidiaries or its affiliates.
 
 
-
+TODO: 
+* add search ICD9/10 by level
