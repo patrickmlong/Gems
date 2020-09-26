@@ -1,0 +1,15 @@
+# .circleci/config.yml
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: julia:1.1
+    steps:
+      - run:
+          name: Install Gems.jl
+          command: julia -e  'using Pkg; pkg"add https://github.com/pkmklong/Gems.jl";'
+workflows:
+  integration:
+    jobs:
+      - build
