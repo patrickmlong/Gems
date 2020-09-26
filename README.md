@@ -1,4 +1,6 @@
-[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://gemsjl.readthedocs.io/en/latest/) Check out the [Gems.jl documentation on ReadTheDocs](https://gemsjl.readthedocs.io/en/latest/).
+[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://gemsjl.readthedocs.io/en/latest/) Check out the [Gems.jl documentation on ReadTheDocs](https://gemsjl.readthedocs.io/en/latest/). <br>
+[![<ORG_NAME>](https://circleci.com/gh/pkmklong/Gems.jl.svg?style=shield)](https://github.com/pkmklong/Gems.jl/blob/master/.circleci/config.yml)
+
 
 # Gems.jl
 Julia package for ICD GEMs mapping
