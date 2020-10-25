@@ -88,4 +88,4 @@ The author of this library is not affiliated, associated, authorized, endorsed b
 TODO: 
 * add search ICD9/10 by level
 * unit tests and code coverage
-* circleci for CI
+* <s>circleci for CI</s>
