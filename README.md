@@ -33,10 +33,8 @@ General Equivalency Maps (GEMs) support the interoperability between ICD-9 and I
 
 <i>Installation</i>
 
-```julia
-using Pkg
-
-pkg"add https://github.com/pkmklong/Gems.jl"
+```
+$ julia -e  'using Pkg; pkg"add https://github.com/pkmklong/Gems.jl";'
 ```
 <i>Forward mapping</i>
 ```julia
