@@ -42,12 +42,12 @@ using Gems
 
 Gems.forward_mapping("59972", flag_type = "approximate")
 
-│ Row │ icd9   │ icd10  │ source_descriptions   │ target_descriptions                    │
-│     │ String │ String │ String                │ String                                 │
-├─────┼────────┼────────┼───────────────────────┼────────────────────────────────────────┤
-│ 1   │ 59972  │ R311   │ Microscopic hematuria │ Benign essential microscopic hematuria │
-│ 2   │ 59972  │ R3121  │ Microscopic hematuria │ Asymptomatic microscopic hematuria     │
-│ 3   │ 59972  │ R3129  │ Microscopic hematuria │ Other microscopic hematuria            │
+│ Row │ icd9   │ icd10  │ target_descriptions                    │ source_descriptions   │
+│     │ String │ String │ String                                 │ String                │
+├─────┼────────┼────────┼────────────────────────────────────────┼───────────────────────┤
+│ 1   │ 59972  │ R311   │ Benign essential microscopic hematuria │ Microscopic hematuria │
+│ 2   │ 59972  │ R3121  │ Asymptomatic microscopic hematuria     │ Microscopic hematuria │
+│ 3   │ 59972  │ R3129  │ Other microscopic hematuria            │ Microscopic hematuria │
 ```
 <i>Backward mapping</i>
 ```julia
