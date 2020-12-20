@@ -42,12 +42,12 @@ using Gems
 
 Gems.forward_mapping("59972", flag_type = "approximate")
 
-│ Row │ icd9   │ icd10  │ descriptions                           │
-│     │ String │ String │ String                                 │
-├─────┼────────┼────────┼────────────────────────────────────────┤
-│ 1   │ 59972  │ R311   │ Benign essential microscopic hematuria │
-│ 2   │ 59972  │ R3121  │ Asymptomatic microscopic hematuria     │
-│ 3   │ 59972  │ R3129  │ Other microscopic hematuria            │
+│ Row │ icd9   │ icd10  │ source_descriptions   │ target_descriptions                    │
+│     │ String │ String │ String                │ String                                 │
+├─────┼────────┼────────┼───────────────────────┼────────────────────────────────────────┤
+│ 1   │ 59972  │ R311   │ Microscopic hematuria │ Benign essential microscopic hematuria │
+│ 2   │ 59972  │ R3121  │ Microscopic hematuria │ Asymptomatic microscopic hematuria     │
+│ 3   │ 59972  │ R3129  │ Microscopic hematuria │ Other microscopic hematuria            │
 ```
 <i>Backward mapping</i>
 ```julia
@@ -55,11 +55,11 @@ using Gems
 
 Gems.backward_mapping("R6521", hide_flags = false)
 
-│ Row │ icd10  │ icd9   │ approximate │ no map │ combination │ scenario │ choice list │ descriptions  │
-│     │ String │ String │ Int64       │ Int64  │ Int64       │ Int64    │ Int64       │ String        │
-├─────┼────────┼────────┼─────────────┼────────┼─────────────┼──────────┼─────────────┼───────────────┤
-│ 1   │ R6521  │ 78552  │ 1           │ 0      │ 1           │ 1        │ 1           │ Septic shock  │
-│ 2   │ R6521  │ 99592  │ 1           │ 0      │ 1           │ 1        │ 2           │ Severe sepsis │
+│ Row │ icd10  │ icd9   │ approximate │ no map │ combination │ scenario │ choice list │ target_descriptions │ source_descriptions             │
+│     │ String │ String │ Int64       │ Int64  │ Int64       │ Int64    │ Int64       │ String              │ String                          │
+├─────┼────────┼────────┼─────────────┼────────┼─────────────┼──────────┼─────────────┼─────────────────────┼─────────────────────────────────┤
+│ 1   │ R6521  │ 78552  │ 1           │ 0      │ 1           │ 1        │ 1           │ Septic shock        │ Severe sepsis with septic shock │
+│ 2   │ R6521  │ 99592  │ 1           │ 0      │ 1           │ 1        │ 2           │ Severe sepsis       │ Severe sepsis with septic shock │
 ```
 
 <i>Retrieve GEMs tables</i>
@@ -68,15 +68,14 @@ using Gems
 
 first(Gems.load_gems9_10(), 5)
 
-5×8 DataFrame. Omitted printing of 1 columns
-│ Row │ icd9   │ icd10  │ approximate │ no map │ combination │ scenario │ choice list │
-│     │ String │ String │ Int64       │ Int64  │ Int64       │ Int64    │ Int64       │
-├─────┼────────┼────────┼─────────────┼────────┼─────────────┼──────────┼─────────────┤
-│ 1   │ 0010   │ A000   │ 0           │ 0      │ 0           │ 0        │ 0           │
-│ 2   │ 0011   │ A001   │ 0           │ 0      │ 0           │ 0        │ 0           │
-│ 3   │ 0019   │ A009   │ 0           │ 0      │ 0           │ 0        │ 0           │
-│ 4   │ 0020   │ A0100  │ 1           │ 0      │ 0           │ 0        │ 0           │
-│ 5   │ 0021   │ A011   │ 0           │ 0      │ 0           │ 0        │ 0           │
+│ Row │ icd9   │ icd10  │ approximate │ no map │ combination │ scenario │ choice list │ target_descriptions                                │ source_descriptions                   │
+│     │ String │ String │ Int64       │ Int64  │ Int64       │ Int64    │ Int64       │ String                                             │ String                                │
+├─────┼────────┼────────┼─────────────┼────────┼─────────────┼──────────┼─────────────┼────────────────────────────────────────────────────┼───────────────────────────────────────┤
+│ 1   │ 0010   │ A000   │ 0           │ 0      │ 0           │ 0        │ 0           │ Cholera due to Vibrio cholerae 01, biovar cholerae │ Cholera due to vibrio cholerae        │
+│ 2   │ 0011   │ A001   │ 0           │ 0      │ 0           │ 0        │ 0           │ Cholera due to Vibrio cholerae 01, biovar eltor    │ Cholera due to vibrio cholerae el tor │
+│ 3   │ 0019   │ A009   │ 0           │ 0      │ 0           │ 0        │ 0           │ Cholera, unspecified                               │ Cholera, unspecified                  │
+│ 4   │ 0020   │ A0100  │ 1           │ 0      │ 0           │ 0        │ 0           │ Typhoid fever, unspecified                         │ Typhoid fever                         │
+│ 5   │ 0021   │ A011   │ 0           │ 0      │ 0           │ 0        │ 0           │ Paratyphoid fever A                                │ Paratyphoid fever A                   │
 ```
 
 ## Notice of Non-Affiliation and Disclaimer 
