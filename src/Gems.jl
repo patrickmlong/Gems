@@ -45,7 +45,7 @@ function forward_mapping(icd_code:: String;
         df = df[df[:icd9] .== icd_code,:]
         df = filter_flags(df, flag_type)
         if hide_flags
-                df = df[:,[:icd9,:icd10,:source_descriptions,:target_descriptions]]
+                df = df[:,[:icd9,:icd10,:target_descriptions,:source_descriptions]]
         end
     return df
 end
@@ -57,7 +57,7 @@ function backward_mapping(icd_code:: String;
         df = load_gems10_9()
         df = df[df[:icd10] .== icd_code,:]
         if hide_flags
-                df = df[:,[:icd10,:icd9,:source_descriptions, :target_desciptions]]
+                df = df[:,[:icd10,:icd9,:target_descriptions,:source_descriptions]]
         end
     return df
 end
