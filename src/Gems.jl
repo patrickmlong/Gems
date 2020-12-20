@@ -45,7 +45,7 @@ function forward_mapping(icd_code:: String;
         df = df[df[:icd9] .== icd_code,:]
         df = filter_flags(df, flag_type)
         if hide_flags
-                df = df[:,[:icd9,:icd10,:source_descriptions,:target_description]]
+                df = df[:,[:icd9,:icd10,:source_descriptions,:target_descriptions]]
         end
     return df
 end
