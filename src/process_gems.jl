@@ -68,6 +68,21 @@ function join_icd_descriptions(df_gems, df_desc)
     return df
 end
 
+function join_icd_descriptions(df_gems, df_desc_target, df_source_description)
+
+    df = join(df_gems, df_desc_target,
+        on = :target => :code,
+        kind = :inner)
+    rename!(df, Dict(:descriptions => :target_descriptions))
+
+    df = join(df, df_source_description,
+        on = :source => :code,
+        kind = :left)
+    rename!(df, Dict(:descriptions => :source_descriptions))
+    
+    return df
+end
+
 
 cd("../data/")
 
@@ -77,8 +92,8 @@ gems9 = make_flag_cols(gems9);
 gems10 = make_flag_cols(gems10);
 desc9 =  make_desc_cols(desc9, "icd9");
 desc10 =  make_desc_cols(desc10, "icd10");
-gems9_10 = join_icd_descriptions(gems9,desc10);
-gems10_9 = join_icd_descriptions(gems10,desc9);
+gems9_10 = join_icd_descriptions(gems9,desc10, desc9);
+gems10_9 = join_icd_descriptions(gems10,desc9, desc10);
 
 icd9_pcs = make_flag_cols(icd9_pcs);
 icd10_pcs = make_flag_cols(icd10_pcs);
