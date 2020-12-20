@@ -9,8 +9,9 @@ function load_tables()
     df_icd10 = rename(CSV.readtable("2018_I10gem.txt", separator = ' ', header = false), cols)
     df_icd9_desc = CSV.readtable("CMS32_DESC_LONG_DX.txt", separator = '\t', header = false)
     df_icd10_desc = CSV.readtable("icd10cm_codes_2018.txt", separator = '\t', header = false)
-    
-    return df_icd9, df_icd10, df_icd9_desc, df_icd10_desc    
+    df_icd9_pcs = rename(CSV.readtable("gem_i9pcs.txt", separator = ' ', header = false), cols)
+    df_icd10_pcs = rename(CSV.readtable("gem_pcsi9.txt", separator = ' ', header = false), cols)
+    return df_icd9, df_icd10, df_icd9_desc, df_icd10_desc, df_icd9_pcs, df_icd10_pcs    
 end
 
 
