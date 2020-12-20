@@ -85,5 +85,7 @@ The author of this library is not affiliated, associated, authorized, endorsed b
 
 TODO: 
 * add search ICD9/10 by level
+* add ICD9/10 PCS mapping
+* add DRG mapping
 * unit tests and code coverage
 * <s>circleci for CI</s>
