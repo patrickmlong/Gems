@@ -2,7 +2,7 @@ using DataFrames
 using CSV
 
 
-
+# TODO REFACTOR
 function load_tables()
 
     cols = ["source", "target", "flags"]
@@ -10,16 +10,14 @@ function load_tables()
     df_icd9 = CSV.File("2018_I9gem.txt", delim = ' ',
         header = false, type=String, ignorerepeated=true) |> DataFrame
     rename!(df_icd9, cols)
-    
     df_icd10 = CSV.File("2018_I10gem.txt", delim = ' ', header = false, type=String, ignorerepeated=true) |> DataFrame
     rename!(df_icd10, cols)
     
-    df_icd9_desc = CSV.File("CMS32_DESC_LONG_DX.txt", delim = '\t', header = false, type=String) |> DataFrame
+    df_icd9_desc = CSV.File("CMS32_DESC_LONG_DX.txt", delim = '\t', header = false, type=String) |> DataFrame                       
     df_icd10_desc = CSV.File("icd10cm_codes_2018.txt", delim = '\t', header = false, type=String) |> DataFrame
     
     df_icd9_pcs = CSV.File("gem_i9pcs.txt", delim = ' ', header = false, type=String, ignorerepeated=true) |> DataFrame
-    rename!(df_icd9_pcs, cols)
-    
+    rename!(df_icd9_pcs, cols)  
     df_icd10_pcs = CSV.File("gem_pcsi9.txt", delim = ' ', header = false, type=String, ignorerepeated=true) |> DataFrame
     rename!(df_icd10_pcs, cols)
     
